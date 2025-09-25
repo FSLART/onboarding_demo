@@ -1,0 +1,29 @@
+name: Lint with Prettier
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Step 3: Install Prettier
+      - name: Install Prettier
+        run: npm install --save-dev prettier
+
+      # Step 4: Run Prettier check
+      - name: Run Prettier
+        run: npx prettier --check .
