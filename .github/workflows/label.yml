@@ -25,6 +25,9 @@ jobs:
             if (text.includes("feature") || text.includes("enhancement")) {
               labels.push("enhancement");
             }
+            if (text.includes("?") || text.includes("how") || text.includes("why")) {
+              labels.push("question");
+            }
             if (labels.length === 0) {
               labels = ["needs-triage"];
             }
